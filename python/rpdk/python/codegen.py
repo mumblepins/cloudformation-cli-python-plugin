@@ -202,7 +202,7 @@ class Python36LanguagePlugin(LanguagePlugin):
     def _pre_package(self, build_path):
         f = TemporaryFile("w+b")  # pylint: disable=R1732
 
-        with zipfile.ZipFile(f, mode="w") as zip_file:
+        with zipfile.ZipFile(f, mode="w", compression=zipfile.ZIP_DEFLATED) as zip_file:
             self._recursive_relative_write(build_path, build_path, zip_file)
         f.seek(0)
 
